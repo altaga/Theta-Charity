@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  websocket:
+    build: ./websocket/
+    networks:
+      - my-net
+    ports:
+      - "1883:1883"
+  website:
+    build: ./website/
+    networks:
+      - my-net
+    ports:
+      - "80:80"
+
+networks:
+  my-net:
+    driver: bridge
