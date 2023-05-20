@@ -171,7 +171,7 @@ El codigo que utilizamos para realizar las API calls de esta API fue el sifguien
 
 Because our app requires a reliable service to carry out a private chat, it was decided to include the XMTP Client to carry out private messages between donors.
 
-[SOURCE CODE](./WebDappReact/src/components/chat.js)
+- [SOURCE CODE](./WebDappReact/src/components/chat.js)
 
 This service has 3 fundamental parts, sign in, get the conversation history and new incoming messages.
 
