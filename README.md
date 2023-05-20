@@ -252,7 +252,7 @@ Para el despliegue de la aplicacion se utilizo el orquestador de contenedores Do
 
 La configuracion para correr los contenedores correctamente esta en el siguiente archivo.
 
-[compose.yaml](./WebDappContainers/compose.yml)
+- [compose.yaml](./WebDappContainers/compose.yml)
 
 ### Route 53:
 
