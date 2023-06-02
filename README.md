@@ -27,32 +27,32 @@ Theta-Charity is a Theta Network based decentralized streaming platform where cr
 ## Tech we Use:
 
 - Theta Network: 
-  - Todos los contratos en el proyecto se utilizan activamente en la red de Theta Mainnet.
+  - All contracts in the project are actively used in the Theta Mainnet network.
     - Pre-deploy wTheta Token Contract: [0xAf537FB7E4c77C97403De94Ce141b7EdB9F7fCf0](https://explorer.thetatoken.org/account/0xAf537FB7E4c77C97403De94Ce141b7EdB9F7fCf0)
     - Charity Contract:  [0xF120b928Af227ce3941333c7D0945731958257A6](https://explorer.thetatoken.org/account/0xF120b928Af227ce3941333c7D0945731958257A6)
     - NFT Contract: [0x1c212b56BE6a9C96F1744d9f3CdD44De588de16B](https://explorer.thetatoken.org/account/0x1c212b56BE6a9C96F1744d9f3CdD44De588de16B)
 - Theta Video: 
-  - Utilizamos las APIs del dashboard para relizar las peticiones de los livestreams y los videos on demand ya en la plataforma de theta video.
+  - We use the dashboard APIs to make requests for livestreams and videos on demand already on the theta video platform.
     - https://docs.thetatoken.org/docs/theta-video-api-overview
 - Theta Scan: 
-  - Utilizamos estas APIs para acceder a los balances de NFTs de cada cuenta facilmente, ya que los RPC calls no proveen una funcion para obtener los balances facilmente.
+  - We use these APIs to access the NFT balances of each account easily, since the RPC calls do not provide a function to obtain the balances.
     - https://www.thetascan.io/document/
 - XMTP:
   - Sign in for authentication to the private conversation.
   - Send direct messages through a private chat.
   - Get message history with the same account.
 - AWS:
-  - EC2: Maquina virtual de EC2 que corre todos los microsevicios mediante contenedores de Docker.
-  - ELB: Load balancer que provee escalabilidad del sistema y a su vez nos permite usar nuestro dominio y el certificado ssl en la pagina web.
-  - Route53: Hosting service que nos permite utilizar nuestro dominio con los servicios de AWS.
+ - EC2: EC2 virtual machine that runs all the microservices through Docker containers.
+ - ELB: Load balancer that provides system scalability and in turn allows us to use our domain and the ssl certificate on the web page.
+ - Route53: Hosting service that allows us to use our domain with AWS services.
 
 # How it's built:
 
 ## Theta Network:
 
-Todas las transacciones que realizan en Theta Network Mainnet. En total la plataforma tiene 2 interacciones principales con la Theta Network.
-
-- Donaciones de la native token al contrato principal de la caridad.
+All transactions they make on Theta Network Mainnet. In total the platform has 2 main interactions with the Theta Network.
+ 
+- Donations from the native token to the main contract of the charity.
 
 <img src="https://i.ibb.co/wC58H18/image.png">
 
@@ -125,11 +125,11 @@ The section of code that allows us to obtain the livestreams, video on demand an
 
 ## Theta Scan:
 
-Las APIs de Theta Scan fueron utilizadas para obtener de forma sencilla los balances de NFTs de la cuenta que conectes desde Metamask a la plataforma.
+Theta Scan APIs were used to easily obtain the NFT balances of the account that you connect from Metamask to the platform.
 
 <img src="https://i.ibb.co/NrNhjLg/image.png">
 
-El codigo que utilizamos para realizar las API calls de esta API fue el sifguiente.
+The code we used to make the API calls of this API was the following:
 
     let temp = await axios({
       method: "get",
@@ -240,29 +240,29 @@ Finally, to send new messages to the other address, we will use the following li
 
 ## Cloud Micro Services:
 
-Todos los microsevicios que usamos en la nube son desplegados mediante docker, en contenedores, para poder desplegar la plataforma de forma sencilla en una maquina virtual, en el caso e AWS una maquina EC2, sin embargo los contenedores son agnosticos a la plataforma, entonces puedes correr el proyecto en cualquier maquina virtual de cualquier cloud.
+All the microservices that we use in the cloud are deployed through docker, in containers, to be able to easily deploy the platform in a virtual machine, in the case of AWS an EC2 machine, however the containers are agnostic to the platform, so you can run the project on any virtual machine in any cloud.
 
 <img src="https://i.ibb.co/9yBRYZj/New-Project.png">
 
 ### Static Website Web and Chat WebSocket Server.
 
-Para el despliegue de la aplicacion se utilizo el orquestador de contenedores Docker Compose ya que debiamos correr en simultaneo de manera fiable el contenedor de la pagina web estatica y el websocket para el chat de la aplicacion.
+For the deployment of the application, the Docker Compose container orchestrator was used since we had to reliably run the static web page container and the websocket for the application chat simultaneously.
 
 <img src="https://i.ibb.co/4ZY0ZXp/docker-drawio-2-1.png">
 
-La configuracion para correr los contenedores correctamente esta en el siguiente archivo.
+The configuration to run the containers correctly is in the following file.
 
 - [compose.yaml](./WebDappContainers/compose.yml)
 
 ### Route 53:
 
-Este servicio nos provee del hosting de la pagina web, con el fin de poderla utilizar para que el dominio https://theta-charity.com/ se conecte directamente a nuestros servicios desplegados en EC2.
+This service provides us with the hosting of the web page, in order to be able to use it so that the domain https://theta-charity.com/ connects directly to our services deployed in EC2.
 
 <img src="https://i.ibb.co/G05xwCm/docker-drawio-3.png">
 
 ### Elastic Load Balancer:
 
-Por ultimo ya con todos estos servicios creados, utilizamos un Load Balancer para poder usar nuestra pagina web desde Route53 junto con su certificado SSL.
+Finally, with all these services created, we use a Load Balancer to be able to use our website from Route53 together with its SSL certificate.
 
 <img src="https://i.ibb.co/RzDb3GY/docker-drawio-5.png">
 
